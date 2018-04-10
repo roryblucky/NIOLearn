@@ -24,7 +24,7 @@ public class FileIOTest {
         RandomAccessFile randomAccessFile = new RandomAccessFile(
                 FileIOTest.class.getClassLoader().getResource("file.txt").getFile(), "rw");
         FileChannel fileChannel = randomAccessFile.getChannel();
-        ByteBuffer bf = ByteBuffer.allocate(1024);
+        ByteBuffer bf = ByteBuffer.allocate((int) fileChannel.size());
 
         while (fileChannel.read(bf) != -1) {//将数据读入buffer中
             bf.flip();//反转buffer，从buffer中读取数据
@@ -33,6 +33,7 @@ public class FileIOTest {
             System.out.println(new String(bytes));
             bf.clear();
         }
+        fileChannel.close();
     }
 
     public static void main(String[] args) throws Exception {
