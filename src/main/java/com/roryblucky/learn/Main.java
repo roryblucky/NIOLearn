@@ -14,6 +14,8 @@ public class Main {
 
         Path dir = Paths.get("/Users/rory/Gitrepository/NIOLearn/src/main/resources/bbb");
         Files.createDirectory(dir);
+
+        System.out.println(System.getSecurityManager());
     }
 
 }
